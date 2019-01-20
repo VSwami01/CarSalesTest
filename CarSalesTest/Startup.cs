@@ -29,7 +29,7 @@ namespace CarSalesTest
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddScoped<ICarRepository, CarRepository>();
+            services.AddSingleton<ICarRepository, CarRepository>();
             services.AddScoped<ICarMapper, CarMapper>();
         }
 

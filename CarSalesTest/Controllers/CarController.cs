@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.Linq;
+
+using System.Net;
+
+using System.Net.Http;
+
 using System.Threading.Tasks;
 using CarSalesTest.Models;
 using CarSalesTest.Repositories;
@@ -33,15 +39,28 @@ namespace CarSalesTest.Controllers
 
         // GET: api/Car/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            CarEntity car = _carRepository.GetSingle(id);
+
+            if(car == null)
+                return NotFound();
+
+            return Ok(_carMapper.MapToDTO(car));
         }
 
         // POST: api/Car
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] CarDTO _carDTO)
         {
+            try
+            {
+                return CreatedAtRoute("DefaultApi", _carRepository.Add(_carMapper.MapToEntity(_carDTO)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         // PUT: api/Car/5
@@ -52,8 +71,23 @@ namespace CarSalesTest.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            CarEntity car = _carRepository.GetSingle(id);
+
+            if (car == null)
+                return NotFound();
+
+            try
+            {
+                _carRepository.Delete(car.Id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
     }
 }
