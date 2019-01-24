@@ -1,0 +1,78 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+
+
+  <div class="panel-body">
+
+    <div class="row">
+      Filter By:
+      <input type="text" [(ngModel)]='listFilter' />
+    </div>
+    <div class="row">
+      Filtered By: {{listFilter}}
+    </div>
+    <div class="row">
+      <div class="tabel-responsive">
+        <table class="table" *ngIf='cars && cars.length'>
+          <thead>
+            <tr>
+              <th>
+                <button class="btn btn-primary" (click)='toggleImage()'>
+                  {{ showImage? 'Hide Image' : 'Show Image'}}
+                </button>
+              </th>
+              <th>
+                Id
+              </th>
+              <th>
+                Make
+              </th>
+              <th>
+                Model
+              </th>
+              <th>
+                Year
+              </th>
+              <th>
+                Price
+              </th>
+              <th>
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let car of filteredCars'>
+              <!--<td>
+    <img [src]='product.imageUrl' [title]='product.description' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'
+         *ngIf='showImage'>
+  </td>-->
+              <td>No Image</td>
+              <td>{{car.id}}</td>
+              <!--<td><a [routerLink]="['/products', product.productId]">{{car.id}}</a></td>-->
+              <td>{{car.make}}</td>
+              <td>{{car.model}}</td>
+              <td>{{car.year}}</td>
+              <td>{{car.price | currency: 'AUD' : true : '1.2-2'}}</td>
+              <td>
+                <!--<a class="btn" (click)="showForEdit(employee)">
+    <i class="fa fa-pencil-square-o"></i>
+  </a>
+  <a class="btn text-danger" (click)="onDelete(employee.EmployeeID)">
+    <i class="fa fa-trash-o"></i>
+  </a>-->
+
+                <a [routerLink] = "['/cars', 1]">Edit</a> |
+                <a >Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
