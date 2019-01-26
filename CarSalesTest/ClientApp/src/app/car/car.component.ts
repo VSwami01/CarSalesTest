@@ -20,7 +20,7 @@ import { GenericValidator } from '../service/generic-validator';
 export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  pageTitle: string = 'Car Edit';
+  pageTitle: string = 'Add Vehical';
   errorMessage: string;
   carForm: FormGroup;
 
@@ -64,12 +64,6 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
         minlength: 'Car wheel must be at least three characters.',
         maxlength: 'Car wheel cannot exceed 50 characters.'
       },
-      //productCode: {
-      //  required: 'Product code is required.'
-      //},
-      //starRating: {
-      //  range: 'Rate the product between 1 (lowest) and 5 (highest).'
-      //}
     };
 
     // Define an instance of the validator for use with this form, 
@@ -79,13 +73,6 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.carForm = this.fb.group({
-      //productName: ['', [Validators.required,
-      //Validators.minLength(3),
-      //Validators.maxLength(50)]],
-      //productCode: ['', Validators.required],
-      //starRating: ['', NumberValidators.range(1, 5)],
-      //tags: this.fb.array([]),
-      //description: ''
 
       make: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       model: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
@@ -95,7 +82,7 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
 
     });
 
-    // Read the product Id from the route parameter
+    // Read the car Id from the route parameter
     
     this.sub = this.route.params.subscribe(
       params => {
@@ -141,10 +128,10 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.car = car;
 
-    if (this.car.id === 0) {
-      this.pageTitle = 'Add Car';
+    if (this.car.id == undefined) {
+      this.pageTitle = 'Add Vehical';
     } else {
-      this.pageTitle = `Edit Car:`;
+      this.pageTitle = 'Edit Vehical';
     }
 
     // Update the data on the form
@@ -157,12 +144,12 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  deleteProduct(): void {
-    if (this.car.id === 0) {
+  deleteCar(): void {
+    if (this.car.id == undefined) {
       // Don't delete, it was never saved.
       this.onSaveComplete();
     } else {
-      if (confirm(`Really delete the Car?`)) {
+      if (confirm('Are you sure you want to delete this vehical?')) {
         this.carService.deleteCar(this.car.id)
           .subscribe(
             () => this.onSaveComplete(),
@@ -171,22 +158,7 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }
   }
-  /*
-  deleteProduct(): void {
-    if (this.product.id === 0) {
-      // Don't delete, it was never saved.
-      this.onSaveComplete();
-    } else {
-      if (confirm(`Really delete the product: ${this.product.productName}?`)) {
-        this.productService.deleteProduct(this.product.id)
-          .subscribe(
-            () => this.onSaveComplete(),
-            (error: any) => this.errorMessage = <any>error
-          );
-      }
-    }
-  }
-  */
+
   saveCar(): void {
     if (this.carForm.dirty && this.carForm.valid) {
       //Copy the form values over the car object values

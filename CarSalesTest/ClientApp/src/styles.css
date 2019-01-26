@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-
 /* Header/Logo Title */
 .page-header {
   text-align: center;
 }
-
-/* Page Content */
-.content {
-  padding: 20px;
+li {
+  font-size: large;
 }
 
+div.panel-heading {
+  font-size: x-large;
+}

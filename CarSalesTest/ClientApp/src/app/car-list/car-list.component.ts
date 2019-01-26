@@ -7,17 +7,10 @@ import { ICar } from '../model/car';
   selector: 'app-car-list-component',
   templateUrl: './car-list.component.html'
 })
-//export class CarListComponent {
-//  public currentCount = 0;
-
-//  public incrementCounter() {
-//    this.currentCount++;
-//  }
-//}
 
 export class CarListComponent implements OnInit {
 
-  pageTitle: string = 'Car List';
+  pageTitle: string = 'Vehical List';
 
   imageWidth: number = 50;
 
@@ -29,9 +22,7 @@ export class CarListComponent implements OnInit {
 
   errorMsg: string;
 
-  //vehicalList: Array<any> = [id: 1, label: 'Car']
-
-  vechical = null;
+  vehical = -1;
   vehicalList = [
     { id: 1, name: 'Car' }
   ];
