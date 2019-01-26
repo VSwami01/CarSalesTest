@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -28,13 +29,15 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+
     AngularFontAwesomeModule,
     RouterModule.forRoot([
       //{ path: '', component: CarListComponent, pathMatch: 'full' },
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },
       { path: 'cars', component: CarListComponent},
-      { path: 'cars/:id', component: CarComponent },
+      { path: 'carEdit/:id', component: CarComponent },
       { path: '', redirectTo: 'cars', pathMatch: 'full' },
       { path: '**', redirectTo: 'cars', pathMatch: 'full' }
     ])

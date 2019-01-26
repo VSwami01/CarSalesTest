@@ -17,8 +17,9 @@ namespace CarSalesTest.Repositories
                 Id = 1,
                 Make = "Holden",
                 Model = "Calais",
-                Year = DateTime.Now,
-                Price = 25000
+                Engine = "3.5L",
+                Door = "5",
+                Wheel = "AWD"
             });
 
             _cars.Add(new CarEntity()
@@ -26,8 +27,9 @@ namespace CarSalesTest.Repositories
                 Id = 2,
                 Make = "Hyundai",
                 Model = "Tucson",
-                Year = DateTime.Now,
-                Price = 35000
+                Engine = "3.5L",
+                Door = "3",
+                Wheel = "FWD"
             });
         }
 
@@ -49,17 +51,21 @@ namespace CarSalesTest.Repositories
             return toAdd;
         }
 
-        public CarEntity Update(CarEntity toUpdate)
+        public CarEntity Update(int id, CarEntity toUpdate)
         {
-            CarEntity single = GetSingle(toUpdate.Id);
+            var index = _cars.FindIndex(car => car.Id.Equals(id));
 
-            if (single == null)
+            if (index == -1 || !toUpdate.Id.Equals(id))
             {
                 return null;
             }
+            else
+            {
+                _cars[index] = toUpdate;
+            }
 
-            _cars[single.Id] = toUpdate;
             return toUpdate;
+
         }
 
         public void Delete(int id)

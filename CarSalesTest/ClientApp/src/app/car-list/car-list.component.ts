@@ -29,6 +29,13 @@ export class CarListComponent implements OnInit {
 
   errorMsg: string;
 
+  //vehicalList: Array<any> = [id: 1, label: 'Car']
+
+  vechical = null;
+  vehicalList = [
+    { id: 1, name: 'Car' }
+  ];
+
   get listFilter() {
     return this._listFilter;
   }
@@ -42,7 +49,8 @@ export class CarListComponent implements OnInit {
 
   cars: ICar[];
 
-  constructor(private _carService: CarService) {
+  constructor(private _carService: CarService,
+    private router: Router,) {
   }
 
   performFilter(filterBY: string): ICar[] {
@@ -67,8 +75,8 @@ export class CarListComponent implements OnInit {
       error => this.errorMsg = <any>error
     );
   }
-  onRatingClicked(msg: string): void {
-    this.pageTitle = msg;
+  onAddVechicalClicked(): void {
+    this.router.navigate(['/carEdit', -1]);
   }
 }
 

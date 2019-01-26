@@ -15,8 +15,9 @@ namespace CarSalesTest.Services
                 Id = carEntity.Id,
                 Make = carEntity.Make,
                 Model = carEntity.Model,
-                Year = carEntity.Year,
-                Price = carEntity.Price
+                Engine = carEntity.Engine,
+                Door = carEntity.Door,
+                Wheel = carEntity.Wheel
             };
         }
 
@@ -27,8 +28,9 @@ namespace CarSalesTest.Services
                 Id = carDTO.Id,
                 Make = carDTO.Make,
                 Model = carDTO.Model,
-                Year = carDTO.Year,
-                Price = carDTO.Price
+                Engine = carDTO.Engine,
+                Door = carDTO.Door,
+                Wheel = carDTO.Wheel
             };
         }
     }

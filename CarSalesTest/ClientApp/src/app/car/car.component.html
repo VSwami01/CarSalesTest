@@ -1,74 +1,138 @@
-<h1>Car</h1>
 
-<p>This is a simple example of an car component.</p>
+
+
+
+
+<a [routerLink]="['/cars']">Back</a>-->
+
+
+
+
+
+
+
 <div class="panel panel-primary">
   <div class="panel-heading">
     {{pageTitle}}
   </div>
 
-
   <div class="panel-body">
+    <form class="form-horizontal"
+          novalidate
+          (ngSubmit)="saveCar()"
+          [formGroup]="carForm">
+      <fieldset>
+        <div class="form-group"
+             [ngClass]="{'has-error': displayMessage.make }">
+          <label class="col-md-2 control-label" for="makeId">Make</label>
 
-    <div class="row">
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="makeId"
+                   type="text"
+                   placeholder="Make (required)"
+                   formControlName="make" />
+            <span class="help-block" *ngIf="displayMessage.make">
+              {{displayMessage.make}}
+            </span>
+          </div>
+        </div>
 
-      <form (ngSubmit)="onSave()">
+        <div class="form-group"
+             [ngClass]="{'has-error': displayMessage.model}">
+          <label class="col-md-2 control-label" for="modelId">Model</label>
 
-        <div class="form-group row">
-          <label for="firstname-input" class="col-2 col-form-label">First Name</label>
-          <div class="col-10">
-            <input class="form-control" type="text" [(ngModel)]="regModel.firstName" name="firstName">
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="modelId"
+                   type="text"
+                   placeholder="Model (required)"
+                   formControlName="model" />
+            <span class="help-block" *ngIf="displayMessage.model">
+              {{displayMessage.model}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error': displayMessage.engine}">
+          <label class="col-md-2 control-label" for="engineId">Engine</label>
+
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="engineId"
+                   type="text"
+                   placeholder="Engine (required)"
+                   formControlName="engine" />
+            <span class="help-block" *ngIf="displayMessage.engine">
+              {{displayMessage.engine}}
+            </span>
           </div>
         </div>
 
 
 
-        <div class="form-group row">
-          <label for="lastname-input" class="col-2 col-form-label">Last Name</label>
-          <div class="col-10">
-            <input class="form-control" type="text" [(ngModel)]="regModel.lastName" name="lastName">
+        <div class="form-group"
+             [ngClass]="{'has-error': displayMessage.door}">
+          <label class="col-md-2 control-label" for="doorId">Door</label>
+
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="doorId"
+                   type="text"
+                   placeholder="Door (required)"
+                   formControlName="door" />
+            <span class="help-block" *ngIf="displayMessage.door">
+              {{displayMessage.door}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group"
+             [ngClass]="{'has-error': displayMessage.wheel}">
+          <label class="col-md-2 control-label" for="wheelId">Wheel</label>
+
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="wheelId"
+                   type="text"
+                   placeholder="Wheel (required)"
+                   formControlName="wheel" />
+            <span class="help-block" *ngIf="displayMessage.wheel">
+              {{displayMessage.wheel}}
+            </span>
           </div>
         </div>
 
 
-
-        <div class="form-group row">
-          <label for="dob-input" class="col-2 col-form-label">DOB</label>
-          <div class="col-3 input-group">
-            <input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dob" [(ngModel)]="regModel.dob" ngbDatepicker #dob="ngbDatepicker">
-            <button class="input-group-addon" (click)="dob.toggle()" type="button">
-              <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-            </button>
+        <div class="form-group">
+          <div class="col-md-4 col-md-offset-2">
+            <span>
+              <button class="btn btn-primary"
+                      type="submit"
+                      style="width:80px;margin-right:10px"
+                      [disabled]='!carForm.valid'>
+                Save
+              </button>
+            </span>
+            <span>
+              <a class="btn btn-default"
+                 style="width:80px"
+                 [routerLink]="['/cars']">
+                Cancel
+              </a>
+            </span>
+            <span>
+              <a class="btn btn-default"
+                 style="width:80px"
+                 (click)="deleteCar()">
+                Delete
+              </a>
+            </span>
           </div>
         </div>
-
-
-
-
-        <div class="form-group row">
-          <label for="city-input" class="col-2 col-form-label">Country</label>
-          <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
-            <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="country" ngbDropdownToggle>{{regModel.country}}</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownManual">
-              <button type="button" class="dropdown-item" *ngFor="let country of countries" (click)="onChangeCountry(country)">{{country}}</button>
-            </div>
-          </div>
-        </div>
-
-
-
-
-
-
-      </form>
-
-
-    </div>
-
+      </fieldset>
+    </form>
+    <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
   </div>
 
 </div>
-
-
-
-
-<a [routerLink]="['/cars']">Back</a>

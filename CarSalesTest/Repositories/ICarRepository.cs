@@ -11,7 +11,7 @@ namespace CarSalesTest.Repositories
         List<CarEntity> GetAll();
         CarEntity GetSingle(int id);
         CarEntity Add(CarEntity toAdd);
-        CarEntity Update(CarEntity toUpdate);
+        CarEntity Update(int id, CarEntity toUpdate);
         void Delete(int id);
     }
 }

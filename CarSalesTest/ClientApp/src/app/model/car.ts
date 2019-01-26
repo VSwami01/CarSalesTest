@@ -2,6 +2,9 @@ export interface ICar{
   id: number;
   make: string;
   model: string;
-  year: Date;
-  price: number;
+  engine: string;
+  door: string;
+  wheel: string;
+  //year: Date;
+  //price: number;
 }

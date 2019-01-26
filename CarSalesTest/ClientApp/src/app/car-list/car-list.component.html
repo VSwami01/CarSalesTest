@@ -1,18 +1,55 @@
+<div class="form-group row">
+  <label class="control-label col-md-12" for="City">City</label>
+  <div class="col-md-4">
+    <!--<select class="form-control" data-val="true" formControlName="city">
+      <option [ngValue]="null">Select Vechical</option>
+      <option *ngFor="let vehical of vehicalList"
+              value={{vehical}}>
+        {{vehical}}
+      </option>
+
+    </select>-->
+
+
+    <select class="form-control" name="vehical" [ngModel]="vehical">
+      <option [ngValue]="null">Choose a vehical</option>
+      <option *ngFor="let vehical of vehicalList" [ngValue]="vehical">
+        {{ vehical.name }}
+      </option>
+    </select>
+
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-primary" (click)='onAddVechicalClicked()'>
+      Add Vehical
+    </button>
+  </div>
+</div>
+
+
 <div class="panel panel-primary">
   <div class="panel-heading">
     {{pageTitle}}
   </div>
 
-
   <div class="panel-body">
 
-    <div class="row">
+    <!--<div class="row col-md-4">
       Filter By:
       <input type="text" [(ngModel)]='listFilter' />
+    </div>-->
+
+    <div class="col-md-8 col-md-offset-4">
+
+  
+        <div class="pull-right">
+          Filter By:
+          <input type="text" [(ngModel)]='listFilter' />
+        </div>
+     
+
     </div>
-    <div class="row">
-      Filtered By: {{listFilter}}
-    </div>
+
     <div class="row">
       <div class="tabel-responsive">
         <table class="table" *ngIf='cars && cars.length'>
@@ -33,10 +70,13 @@
                 Model
               </th>
               <th>
-                Year
+                Engine
               </th>
               <th>
-                Price
+                Door
+              </th>
+              <th>
+                Wheel
               </th>
               <th>
 
@@ -46,26 +86,31 @@
           <tbody>
             <tr *ngFor='let car of filteredCars'>
               <!--<td>
-    <img [src]='product.imageUrl' [title]='product.description' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'
-         *ngIf='showImage'>
-  </td>-->
+              <img [src]='product.imageUrl' [title]='product.description' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'
+                   *ngIf='showImage'>
+            </td>-->
               <td>No Image</td>
               <td>{{car.id}}</td>
               <!--<td><a [routerLink]="['/products', product.productId]">{{car.id}}</a></td>-->
               <td>{{car.make}}</td>
               <td>{{car.model}}</td>
-              <td>{{car.year}}</td>
-              <td>{{car.price | currency: 'AUD' : true : '1.2-2'}}</td>
+              <td>{{car.engine}}</td>
+              <td>{{car.door}}</td>
+              <td>{{car.wheel}}</td>
+              <!--<td>{{car.year}}</td>-->
+              <!--<td>{{car.price | currency: 'AUD' : true : '1.2-2'}}</td>-->
               <td>
                 <!--<a class="btn" (click)="showForEdit(employee)">
-    <i class="fa fa-pencil-square-o"></i>
-  </a>
-  <a class="btn text-danger" (click)="onDelete(employee.EmployeeID)">
-    <i class="fa fa-trash-o"></i>
-  </a>-->
+                <i class="fa fa-pencil-square-o"></i>
+              </a>
+              <a class="btn text-danger" (click)="onDelete(employee.EmployeeID)">
+                <i class="fa fa-trash-o"></i>
+              </a>-->
 
-                <a [routerLink] = "['/cars', 1]">Edit</a> |
-                <a >Delete</a>
+                <a class="btn btn-primary"
+                   [routerLink]="['/carEdit', car.id]">
+                  Edit
+                </a>
               </td>
             </tr>
           </tbody>

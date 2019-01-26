@@ -55,7 +55,7 @@ namespace CarSalesTest.Controllers
         {
             try
             {
-                return CreatedAtRoute("DefaultApi", _carRepository.Add(_carMapper.MapToEntity(_carDTO)));
+                return Ok(_carRepository.Add(_carMapper.MapToEntity(_carDTO)));
             }
             catch (Exception e)
             {
@@ -65,8 +65,22 @@ namespace CarSalesTest.Controllers
 
         // PUT: api/Car/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] CarDTO _carDTO)
         {
+            CarEntity car = _carRepository.GetSingle(id);
+
+            if (car == null)
+                return NotFound();
+
+            try
+            {
+                _carRepository.Update(id, _carMapper.MapToEntity(_carDTO));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         // DELETE: api/ApiWithActions/5
