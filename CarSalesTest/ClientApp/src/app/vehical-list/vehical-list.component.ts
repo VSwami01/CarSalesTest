@@ -4,11 +4,11 @@ import { CarService } from '../service/car.service';
 import { ICar } from '../model/car';
 
 @Component({
-  selector: 'app-car-list-component',
-  templateUrl: './car-list.component.html'
+  selector: 'app-vehical-list-component',
+  templateUrl: './vehical-list.component.html'
 })
 
-export class CarListComponent implements OnInit {
+export class VehicalListComponent implements OnInit {
 
   pageTitle: string = 'Vehical List';
 

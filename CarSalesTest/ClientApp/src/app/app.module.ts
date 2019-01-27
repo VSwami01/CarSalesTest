@@ -7,23 +7,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CarService } from './service/car.service';
 import { CarComponent } from './car/car.component';
-import { CarListComponent } from './car-list/car-list.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { VehicalListComponent } from './vehical-list/vehical-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     CarComponent,
-    CarListComponent
+    VehicalListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,10 +30,10 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
       //{ path: '', component: CarListComponent, pathMatch: 'full' },
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },
-      { path: 'cars', component: CarListComponent},
+      { path: 'vehicals', component: VehicalListComponent},
       { path: 'carEdit/:id', component: CarComponent },
-      { path: '', redirectTo: 'cars', pathMatch: 'full' },
-      { path: '**', redirectTo: 'cars', pathMatch: 'full' }
+      { path: '', redirectTo: 'vehicals', pathMatch: 'full' },
+      { path: '**', redirectTo: 'vehicals', pathMatch: 'full' }
     ])
   ],
   providers: [CarService],

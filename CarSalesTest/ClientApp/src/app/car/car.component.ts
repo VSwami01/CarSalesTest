@@ -20,7 +20,7 @@ import { GenericValidator } from '../service/generic-validator';
 export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  pageTitle: string = 'Add Vehical';
+  pageTitle: string = 'Add Car';
   errorMessage: string;
   carForm: FormGroup;
 
@@ -31,10 +31,6 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
   displayMessage: { [key: string]: string } = {};
   private validationMessages: { [key: string]: { [key: string]: string } };
   private genericValidator: GenericValidator;
-
-  get tags(): FormArray {
-    return <FormArray>this.carForm.get('tags');
-  }
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -110,10 +106,6 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  addTag(): void {
-    this.tags.push(new FormControl());
-  }
-
   getCar(id: number): void {
     this.carService.getCar(id)
       .subscribe(
@@ -129,7 +121,7 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.car = car;
 
     if (this.car.id == undefined) {
-      this.pageTitle = 'Add Vehical';
+      this.pageTitle = 'Add Car';
     } else {
       this.pageTitle = 'Edit Vehical';
     }
@@ -177,6 +169,6 @@ export class CarComponent implements OnInit, AfterViewInit, OnDestroy {
   onSaveComplete(): void {
     // Reset the form to clear the flags
     this.carForm.reset();
-    this.router.navigate(['/cars']);
+    this.router.navigate(['/vehicals']);
   }
 }
