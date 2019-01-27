@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Linq;
-
-using System.Net;
-
-using System.Net.Http;
-
-using System.Threading.Tasks;
 using CarSalesTest.Models;
 using CarSalesTest.Repositories;
 using CarSalesTest.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarSalesTest.Controllers
@@ -101,7 +93,6 @@ namespace CarSalesTest.Controllers
             {
                 return BadRequest(e.Message);
             }
-            
         }
     }
 }
