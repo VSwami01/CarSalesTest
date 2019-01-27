@@ -7,9 +7,9 @@ import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/merge';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { ICar } from '../model/car';
-import { CarService } from '../service/car.service';
-import { GenericValidator } from '../service/generic-validator';
+import { ICar } from '../../model/car';
+import { CarService } from '../../service/car.service';
+import { GenericValidator } from '../../service/generic-validator';
 
 
 @Component({

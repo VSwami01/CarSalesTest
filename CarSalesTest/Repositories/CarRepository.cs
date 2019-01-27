@@ -16,7 +16,7 @@ namespace CarSalesTest.Repositories
             {
                 Id = 1,
                 Make = "Holden",
-                Model = "Calais",
+                Model = "Calais VE",
                 Engine = "3.5L",
                 Door = "5",
                 Wheel = "AWD"
@@ -29,6 +29,33 @@ namespace CarSalesTest.Repositories
                 Model = "Tucson",
                 Engine = "3.5L",
                 Door = "3",
+                Wheel = "FWD"
+            });
+            _cars.Add(new CarEntity()
+            {
+                Id = 3,
+                Make = "Mazda",
+                Model = "CX 5",
+                Engine = "1.6L Turbo",
+                Door = "5",
+                Wheel = "AWD"
+            });
+            _cars.Add(new CarEntity()
+            {
+                Id = 4,
+                Make = "Honda",
+                Model = "CRV",
+                Engine = "2.0L",
+                Door = "5",
+                Wheel = "FWD"
+            });
+            _cars.Add(new CarEntity()
+            {
+                Id = 5,
+                Make = "Hyundai",
+                Model = "i30 ActiveX",
+                Engine = "2.0L",
+                Door = "5",
                 Wheel = "FWD"
             });
         }

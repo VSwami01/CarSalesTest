@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace CarSalesTest.Models
 {
-    public class BaseDTO
+    public class VehicalDTO
     {
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public int VehicalTypeId { get; set; }
     }
 }

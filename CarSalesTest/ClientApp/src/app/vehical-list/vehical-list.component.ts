@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from '../service/car.service';
 import { ICar } from '../model/car';
+import { IVehicalType } from '../model/vehicalType';
 
 @Component({
   selector: 'app-vehical-list-component',
@@ -12,18 +13,13 @@ export class VehicalListComponent implements OnInit {
 
   pageTitle: string = 'Vehical List';
 
-  imageWidth: number = 50;
-
-  imageMargin: number = 2;
-
-  showImage: boolean = false;
-
   _listFilter: string;
 
   errorMsg: string;
 
-  vehical = -1;
-  vehicalList = [
+  vehicalType: IVehicalType = null;
+
+  vehicalList: Array<IVehicalType> = [
     { id: 1, name: 'Car' }
   ];
 
@@ -35,10 +31,17 @@ export class VehicalListComponent implements OnInit {
 
     this.filteredCars = this.listFilter ? this.performFilter(this.listFilter) : this.cars;
   }
-
+  // all vehical types should be added here
+  // different types of vechicals can possibly be shown in seperate tables as they can have completely different properties
   filteredCars: ICar[];
 
   cars: ICar[];
+  //Sample types
+  //boats: IBoats;
+  //caravans: ICaravans;
+  //Bikes: IBikes;
+  //trucks: ITrucks;
+
 
   constructor(private _carService: CarService,
     private router: Router,) {
@@ -49,10 +52,6 @@ export class VehicalListComponent implements OnInit {
     filterBY = filterBY.toLocaleLowerCase();
 
     return this.cars.filter((item: ICar) => item.make.toLocaleLowerCase().indexOf(filterBY) != -1);
-  }
-
-  toggleImage(): void {
-    this.showImage = !this.showImage;
   }
 
   ngOnInit(): void {
@@ -67,7 +66,17 @@ export class VehicalListComponent implements OnInit {
     );
   }
   onAddVechicalClicked(): void {
-    this.router.navigate(['/carEdit', -1]);
+
+    if (this.vehicalType == null) {
+      alert('vehicalType not selected');
+    }
+    else {
+
+      //navigation to different vechicals can be added here. eg Truck, Boat, Bike
+
+      if (this.vehicalType.id == 1)
+        this.router.navigate(['/carEdit', -1]);
+    }
   }
 }
 

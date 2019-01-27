@@ -1,10 +1,7 @@
-export interface ICar{
-  id: number;
-  make: string;
-  model: string;
+import { IVehical } from "./vehical";
+
+export interface ICar extends IVehical{
   engine: string;
   door: string;
   wheel: string;
-  //year: Date;
-  //price: number;
 }

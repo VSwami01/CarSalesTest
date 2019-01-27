@@ -1,16 +1,16 @@
 <div class="form-group row">
   <div class="col-md-4">
 
-    <select class="form-control" name="vehical" [(ngModel)]="vehical">
-      <option value="-1">-- Select a Vehical --</option>
-      <option *ngFor="let vehical of vehicalList" [ngValue]="vehical">
-        {{ vehical.name }}
+    <select class="form-control" name="vehicalSelect" [(ngModel)]="vehicalType">
+      <option [ngValue]=null>-- Select a Vehical --</option>
+      <option *ngFor="let vehicalType of vehicalList" [ngValue]="vehicalType">
+        {{ vehicalType.name }}
       </option>
     </select>
 
   </div>
   <div class="col-md-4">
-    <button class="btn btn-primary" (click)='onAddVechicalClicked()'>
+    <button class="btn btn-primary" (click)='onAddVechicalClicked()' [disabled]='vehicalType == undefined'>
       Add Vehical
     </button>
   </div>
@@ -32,6 +32,7 @@
     </div>
 
     <div class="row">
+      <!--possibly different tables for different types of vehicals like truck, boats, bikes, caravans-->
       <div class="tabel-responsive">
         <table class="table" *ngIf='cars && cars.length'>
           <thead>
@@ -68,6 +69,7 @@
               <td>{{car.door}}</td>
               <td>{{car.wheel}}</td>
               <td>
+                <!--edit buttons in the table should point to respective edit url eg /boatEdit, /bikeEdit -->  
                 <a class="btn btn-primary"
                    [routerLink]="['/carEdit', car.id]" style="width:80px">
                   Edit

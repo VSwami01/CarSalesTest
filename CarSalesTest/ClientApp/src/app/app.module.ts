@@ -8,9 +8,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CarService } from './service/car.service';
-import { CarComponent } from './car/car.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { VehicalListComponent } from './vehical-list/vehical-list.component';
+import { CarComponent } from './vehical/car/car.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,6 @@ import { VehicalListComponent } from './vehical-list/vehical-list.component';
 
     AngularFontAwesomeModule,
     RouterModule.forRoot([
-      //{ path: '', component: CarListComponent, pathMatch: 'full' },
-      //{ path: 'counter', component: CounterComponent },
-      //{ path: 'fetch-data', component: FetchDataComponent },
       { path: 'vehicals', component: VehicalListComponent},
       { path: 'carEdit/:id', component: CarComponent },
       { path: '', redirectTo: 'vehicals', pathMatch: 'full' },

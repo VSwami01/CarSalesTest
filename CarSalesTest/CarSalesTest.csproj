@@ -31,7 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\car\" />
+    <Folder Include="ClientApp\src\app\vehical\car\" />
+    <Folder Include="ClientApp\src\app\vehical\caravan\" />
+    <Folder Include="ClientApp\src\app\vehical\bike\" />
+    <Folder Include="ClientApp\src\app\vehical\boat\" />
+    <Folder Include="ClientApp\src\app\vehical\truck\" />
   </ItemGroup>
 
   <ItemGroup>
